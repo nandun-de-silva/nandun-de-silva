@@ -290,19 +290,34 @@ h1.hn span {
 }
 
 @media (max-width: 480px) {
-  .hstats {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
+  .hctas {
+    flex-wrap: nowrap;
+    gap: 6px;
   }
-  .sep {
-    display: none;
+  .hctas .bp,
+  .hctas .bo {
+    font-size: 0.73rem;
+    padding: 9px 10px;
+    flex: 1;
+    justify-content: center;
+    white-space: nowrap;
+  }
+  .hstats {
+    gap: 0;
   }
   .stat {
-    padding-right: 0;
+    padding-right: 14px;
+  }
+  .sep {
+    margin-right: 14px;
+    height: 28px;
   }
   .sn {
-    font-size: 1.8rem;
+    font-size: 1.45rem;
+  }
+  .sl {
+    font-size: 0.54rem;
+    letter-spacing: 0.07em;
   }
 }
 </style>

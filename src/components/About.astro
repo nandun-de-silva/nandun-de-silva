@@ -182,7 +182,17 @@ const base = '/nandun-de-silva';
 .dlb-next{right:16px}
 
 @media(max-width:1024px){.ag{grid-template-columns:1fr}.aside{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}}
-@media(max-width:768px){.amain{padding:28px 24px}.acard{padding:22px 24px}.dmodal-gallery.cols-4{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){
+  .amain{padding:28px 24px}
+  .acard{padding:22px 24px}
+  .dmodal-gallery.cols-4{grid-template-columns:1fr 1fr 1fr}
+  /* Push modal below the fixed navbar so close button is always reachable */
+  .dmodal-bg{align-items:flex-start;padding-top:88px;overflow-y:auto}
+  .dmodal-box{max-height:none;margin-bottom:20px;border-radius:16px}
+  .dmodal-scroll{overflow-y:visible}
+  /* Lightbox close button below navbar */
+  .dlb-close{top:88px}
+}
 @media(max-width:480px){.aside{grid-template-columns:1fr}.dmodal-gallery.cols-4{grid-template-columns:1fr 1fr}.dmodal-gallery.cols-2{grid-template-columns:1fr 1fr}}
 </style>
 
