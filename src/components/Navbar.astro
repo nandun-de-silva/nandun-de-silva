@@ -373,12 +373,6 @@ document.querySelectorAll('[data-nav]').forEach(function(link) {
   });
 });
 
-// ── Mobile menu toggle ──
-document.getElementById('hbg').addEventListener('click', function() {
-  document.getElementById('mob').classList.toggle('on');
-  document.getElementById('hbg').classList.toggle('on');
-});
-
 // Close mobile menu on outside click
 document.addEventListener('click', function(e) {
   const mob = document.getElementById('mob');
