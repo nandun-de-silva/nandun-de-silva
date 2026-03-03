@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+// page title prop default and base URL from environment
+const { title = 'Nandun De Silva' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<!DOCTYPE html>
+<!--
+  Base layout wraps pages, includes global styles, theme logic,
+  scroll buttons and orb background animations.
+-->
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>{title}</title>
+  <meta name="descPortfolioription" content=" of Nandun De Silva — IT Business Analyst & Software Engineer based in Sri Lanka."/>
+  <link rel="icon" type="image/x-icon" href="/nandun-de-silva/favicon.ico"/>
+</head>
+<body>
+  <!-- Orbs -->
+  <div style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+  </div>
+
+  <slot/>
+
+  <!-- Scroll to top -->
+  <button id="stt" aria-label="Scroll to top">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <style>
+    .orb{position:absolute;border-radius:50%;filter:blur(110px);will-change:transform;animation:drift 28s ease-in-out infinite}
+    .o1{width:700px;height:700px;top:-20%;left:-15%;animation-delay:0s}
+    .o2{width:550px;height:550px;top:30%;right:-15%;animation-delay:-9s}
+    .o3{width:450px;height:450px;bottom:-5%;left:25%;animation-delay:-18s}
+    [data-theme="dark"] .o1{background:radial-gradient(circle,rgba(10,132,255,0.09),transparent 70%)}
+    [data-theme="dark"] .o2{background:radial-gradient(circle,rgba(10,132,255,0.06),transparent 70%)}
+    [data-theme="dark"] .o3{background:radial-gradient(circle,rgba(10,132,255,0.05),transparent 70%)}
+    [data-theme="light"] .o1{background:radial-gradient(circle,rgba(0,122,255,0.07),transparent 70%)}
+    [data-theme="light"] .o2{background:radial-gradient(circle,rgba(0,122,255,0.05),transparent 70%)}
+    [data-theme="light"] .o3{background:radial-gradient(circle,rgba(0,122,255,0.04),transparent 70%)}
+  </style>
+
+  <script>
+    // Theme toggle and persistence logic
+    const html = document.documentElement;
+    const tIco = document.getElementById('tIco');
+    const apply = (t) => {
+      html.setAttribute('data-theme', t);
+      if(tIco) tIco.textContent = t === 'dark' ? '☀️' : '🌙';
+      localStorage.setItem('theme', t);
+    };
+    const saved = localStorage.getItem('theme');
+    const sys = window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+    apply(saved || sys);
+    document.getElementById('tBtn')?.addEventListener('click', () => {
+      apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+
+    // Nav stuck
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav?.classList.toggle('stuck', scrollY > 50), {passive:true});
+
+    // Mobile menu
+    const hbg = document.getElementById('hbg');
+    const mob = document.getElementById('mob');
+    hbg?.addEventListener('click', () => { hbg.classList.toggle('on'); mob?.classList.toggle('on'); });
+    mob?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg?.classList.remove('on'); mob?.classList.remove('on'); }));
+
+    // Reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('up'); io.unobserve(e.target); }});
+    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+    // Scroll to top
+    const stt = document.getElementById('stt');
+    window.addEventListener('scroll', () => stt?.classList.toggle('show', scrollY > 400), {passive:true});
+    stt?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>

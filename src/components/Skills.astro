@@ -1,0 +1,71 @@
+---
+---
+<!--
+  Skills component shows categories of technical proficiencies with icons
+  and tags; purely presentational.
+-->
+
+<section id="skills">
+  <div class="w">
+    <div class="sh r">
+      <div class="ey">Technical Skills</div>
+      <h2 class="st">What I Bring<br>to the Table</h2>
+      <p class="sd">A broad but precise skillset spanning analysis, modelling, development, and data — built through 15+ individual projects.</p>
+    </div>
+    <div class="skg">
+      <div class="g skc r d1">
+        <div class="skico">🔍</div>
+        <div class="sktitle">Business Analysis</div>
+        <div class="sktags">
+          <span class="tg">Requirements Engineering</span><span class="tg">Stakeholder Analysis</span><span class="tg">Process Mapping</span><span class="tg">BPR</span><span class="tg">Feasibility Studies</span><span class="tg">RTM</span>
+        </div>
+      </div>
+      <div class="g skc r d2">
+        <div class="skico">📐</div>
+        <div class="sktitle">Modelling &amp; Design</div>
+        <div class="sktags">
+          <span class="tg">UML</span><span class="tg">ERD</span><span class="tg">DFD</span><span class="tg">Use Case</span><span class="tg">Sequence Diagrams</span><span class="tg">BPMN</span>
+        </div>
+      </div>
+      <div class="g skc r d3">
+        <div class="skico">📊</div>
+        <div class="sktitle">Data &amp; Research</div>
+        <div class="sktags">
+          <span class="tg">SPSS</span><span class="tg">Statistical Analysis</span><span class="tg">Regression</span><span class="tg">Quantitative Research</span><span class="tg">Survey Design</span>
+        </div>
+      </div>
+      <div class="g skc r d1">
+        <div class="skico">💻</div>
+        <div class="sktitle">Development</div>
+        <div class="sktags">
+          <span class="tg">Java</span><span class="tg">Python</span><span class="tg">C#</span><span class="tg">JavaScript</span><span class="tg">TypeScript</span><span class="tg">HTML / CSS</span><span class="tg">SQL</span><span class="tg">Node.js</span>
+        </div>
+      </div>
+      <div class="g skc r d2">
+        <div class="skico">🛠️</div>
+        <div class="sktitle">Tools &amp; Platforms</div>
+        <div class="sktags">
+          <span class="tg">Figma</span><span class="tg">VS Code</span><span class="tg">Git</span><span class="tg">GitHub Actions</span><span class="tg">MySQL</span><span class="tg">SQL Server</span><span class="tg">Firebase</span><span class="tg">Lucidchart</span><span class="tg">Playwright</span>
+        </div>
+      </div>
+      <div class="g skc r d3">
+        <div class="skico">📋</div>
+        <div class="sktitle">Project Management</div>
+        <div class="sktags">
+          <span class="tg">Agile / Scrum</span><span class="tg">Waterfall</span><span class="tg">SDLC</span><span class="tg">Risk Management</span><span class="tg">Stakeholder Comms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* grid layout for skill cards */
+.skg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.skc{padding:32px 28px}
+.skico{font-size:2rem;margin-bottom:14px}
+.sktitle{font-size:1rem;font-weight:700;color:var(--t1);margin-bottom:16px;letter-spacing:-0.01em}
+.sktags{display:flex;flex-wrap:wrap;gap:8px}
+@media(max-width:1024px){.skg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.skg{grid-template-columns:1fr}.skc{padding:28px 24px}}
+</style>

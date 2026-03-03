@@ -1,0 +1,23 @@
+---
+---
+<!--
+  Footer component shows copyright and location.
+-->
+
+<footer>
+  <div class="fpill">
+    <div class="fdot"></div>
+    <p>© 2026 <span>Nandun De Silva</span> · Sri Lanka 🇱🇰</p>
+    <div class="fdot"></div>
+  </div>
+</footer>
+
+<style>
+/* footer container styling */
+footer{position:relative;z-index:2;padding:0 0 32px;display:flex;justify-content:center;background:transparent;border:none}
+.fpill{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 32px;width:calc(100% - 80px);max-width:1280px;background:var(--glass);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1px solid var(--border);border-radius:980px;box-shadow:var(--shadow)}
+.fpill p{font-size:0.77rem;color:var(--t3);letter-spacing:0.02em;white-space:nowrap}
+.fpill span{color:var(--accent)}
+.fdot{width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.6;flex-shrink:0;animation:pulse 2.2s ease-in-out infinite}
+@media(max-width:768px){.fpill{width:calc(100% - 32px);padding:12px 20px}}
+</style>

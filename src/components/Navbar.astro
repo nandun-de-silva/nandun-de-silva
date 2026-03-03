@@ -1,0 +1,418 @@
+---
+---
+<!--
+  Navbar component provides navigation links, theme toggle, and mobile menu.
+  Contains logic for active link highlighting and smooth scrolling.
+-->
+
+<header id="nav">
+  <div class="bar">
+    <a href="#hero" class="logo" data-nav="hero"><span>Nandun De Silva</span></a>
+    <nav>
+      <ul class="nav-ul">
+        <li><a href="#about"     data-nav="about">About</a></li>
+        <li><a href="#skills"    data-nav="skills">Skills</a></li>
+        <li><a href="#projects"  data-nav="projects">Projects</a></li>
+        <li><a href="#education" data-nav="education">Education</a></li>
+        <li><a href="#contact"   data-nav="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-r">
+      <button class="tbtn" id="tBtn" aria-label="Toggle theme"><span id="tIco">🌙</span></button>
+      <a href="#contact" class="hirebtn" id="hireBtn">Hire Me</a>
+      <button class="hbg" id="hbg" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mob" id="mob">
+  <a href="#about"     data-nav="about">About</a>
+  <a href="#skills"    data-nav="skills">Skills</a>
+  <a href="#projects"  data-nav="projects">Projects</a>
+  <a href="#education" data-nav="education">Education</a>
+  <a href="#contact"   data-nav="contact">Contact</a>
+  <a href="#contact" class="mob-hire">Hire Me</a>
+</div>
+
+<style>
+#nav {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  transition: all 0.4s var(--ease);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 24px;
+  width: calc(100% - 80px);
+  max-width: 1280px;
+  background: var(--glass);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid var(--border);
+  border-radius: 980px;
+  box-shadow: var(--shadow);
+  pointer-events: auto;
+  transition: all 0.4s var(--ease);
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--t1);
+  letter-spacing: -0.02em;
+  padding: 5px 10px;
+  border-radius: 980px;
+  transition: background 0.2s;
+}
+.logo span {
+  color: var(--accent);
+}
+.logo.active {
+  background: var(--accent-dim);
+}
+.logo.nav-flash {
+  animation: navflash 0.65s ease-out forwards;
+}
+
+.nav-ul {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-ul a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--t2);
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.005em;
+  padding: 5px 12px;
+  border-radius: 980px;
+  position: relative;
+}
+.nav-ul a:hover {
+  color: var(--t1);
+}
+
+/* Active state — blue pill */
+.nav-ul a.active {
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--accent-dim);
+}
+.nav-ul a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+/* Flash animation when clicking already-active section */
+@keyframes navflash {
+  0% {
+    background: var(--accent-dim);
+    box-shadow: 0 0 0 0 var(--accent-dim);
+  }
+  40% {
+    background: rgba(10,132,255,0.28);
+    box-shadow: 0 0 0 8px transparent;
+  }
+  100% {
+    background: var(--accent-dim);
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.nav-ul a.nav-flash {
+  animation: navflash 0.65s ease-out forwards;
+}
+
+.nav-r {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tbtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 980px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  color: var(--t1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.25s;
+}
+.tbtn:hover {
+  background: var(--glass-hov);
+  border-color: var(--accent);
+  transform: scale(1.08);
+}
+
+/* Hire Me — continuous pulse ring */
+@keyframes hirepulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(10,132,255,0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(10,132,255,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(10,132,255,0);
+  }
+}
+.hirebtn {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 980px;
+  border: 1.5px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.01em;
+  animation: hirepulse 2.2s ease-in-out infinite;
+}
+.hirebtn:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  transform: translateY(-1px);
+  animation: none;
+}
+
+.hbg {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.hbg span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--t1);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.hbg.on span:nth-child(1) {
+  transform: rotate(45deg) translate(4px,4px);
+}
+.hbg.on span:nth-child(2) {
+  opacity: 0;
+}
+.hbg.on span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px,-4px);
+}
+
+.mob {
+  display: none;
+  position: fixed;
+  top: 84px;
+  left: 40px;
+  right: 40px;
+  z-index: 99;
+  background: var(--glass);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 12px 24px 20px;
+}
+.mob.on {
+  display: block;
+}
+.mob a {
+  display: block;
+  padding: 12px 0;
+  color: var(--t2);
+  font-size: 0.92rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--div);
+  transition: color 0.2s;
+}
+.mob a:last-child {
+  border-bottom: none;
+}
+.mob a:hover {
+  color: var(--t1);
+}
+.mob-hire {
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+}
+
+@media (max-width: 768px) {
+  .nav-ul,
+  .nav-r > .hirebtn {
+    display: none;
+  }
+  .hbg {
+    display: flex;
+  }
+  .bar {
+    width: calc(100% - 32px);
+    padding: 0 16px;
+  }
+  .mob {
+    left: 16px;
+    right: 16px;
+  }
+  .nav-r {
+    gap: 6px;
+  }
+}
+</style>
+
+<script is:inline>
+// ── Close any open overlay elements (certificate or detail modals, lightbox).
+// Ensures body scroll is restored if a modal was active.
+function closeAllModals() {
+  ['cmodal','dmodal'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el && el.classList.contains('open')) {
+      el.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+  const lb = document.getElementById('dlightbox');
+  if (lb && lb.classList.contains('open')) lb.classList.remove('open');
+}
+
+// ── Active section via scroll ──
+const sections = ['hero','about','skills','projects','education','contact'];
+
+function setActive(id) {
+  document.querySelectorAll('[data-nav]').forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('data-nav') === id);
+  });
+}
+
+function updateActive() {
+  if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 60) {
+    setActive(sections[sections.length - 1]);
+    return;
+  }
+  var current = sections[0];
+  for (var i = 0; i < sections.length; i++) {
+    var el = document.getElementById(sections[i]);
+    if (el && el.getBoundingClientRect().top <= 120) {
+      current = sections[i];
+    }
+  }
+  setActive(current);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  updateActive();
+  window.addEventListener('scroll', updateActive, { passive: true });
+});
+
+// ── Nav link clicks ──
+document.querySelectorAll('[data-nav]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    const id = link.getAttribute('data-nav');
+    const section = document.getElementById(id);
+
+    closeAllModals();
+
+    const rect = section && section.getBoundingClientRect();
+    const inView = rect && rect.top < window.innerHeight * 0.65 && rect.bottom > window.innerHeight * 0.15;
+
+    if (inView) {
+      e.preventDefault();
+
+      link.classList.remove('nav-flash');
+      void link.offsetWidth;
+      link.classList.add('nav-flash');
+      setTimeout(function() { link.classList.remove('nav-flash'); }, 700);
+
+      const target = section.querySelector('.sh') || section.querySelector('.cbox') || section.querySelector('.htext');
+      if (target) {
+        const flashClass = target.classList.contains('cbox') ? 'cbox-flash'
+                         : target.classList.contains('htext') ? 'htext-flash'
+                         : 'sh-flash';
+        target.classList.remove(flashClass);
+        void target.offsetWidth;
+        target.classList.add(flashClass);
+        setTimeout(function() { target.classList.remove(flashClass); }, 900);
+      }
+
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('mob').classList.remove('on');
+    document.getElementById('hbg').classList.remove('on');
+  });
+});
+
+// ── Mobile menu toggle ──
+document.getElementById('hbg').addEventListener('click', function() {
+  document.getElementById('mob').classList.toggle('on');
+  document.getElementById('hbg').classList.toggle('on');
+});
+
+// Close mobile menu on outside click
+document.addEventListener('click', function(e) {
+  const mob = document.getElementById('mob');
+  const hbg = document.getElementById('hbg');
+  if (mob.classList.contains('on') && !mob.contains(e.target) && !hbg.contains(e.target)) {
+    mob.classList.remove('on');
+    hbg.classList.remove('on');
+  }
+});
+
+// ── Hire Me button ──
+document.getElementById('hireBtn').addEventListener('click', function(e) {
+  const contact = document.getElementById('contact');
+  const cbox = contact && contact.querySelector('.cbox');
+  const rect = contact && contact.getBoundingClientRect();
+  const inView = rect && rect.top < window.innerHeight * 0.65 && rect.bottom > window.innerHeight * 0.15;
+
+  if (inView) {
+    e.preventDefault();
+    if (cbox) {
+      cbox.classList.remove('cbox-bounce');
+      void cbox.offsetWidth;
+      cbox.classList.add('cbox-bounce');
+      setTimeout(function() { cbox.classList.remove('cbox-bounce'); }, 800);
+    }
+  } else {
+    setTimeout(function() {
+      if (cbox) {
+        cbox.classList.remove('cbox-entrance');
+        void cbox.offsetWidth;
+        cbox.classList.add('cbox-entrance');
+        setTimeout(function() { cbox.classList.remove('cbox-entrance'); }, 1000);
+      }
+    }, 600);
+  }
+});
+</script>

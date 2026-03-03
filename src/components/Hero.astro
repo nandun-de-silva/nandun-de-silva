@@ -1,0 +1,308 @@
+---
+---
+<!--
+  Hero section introduces the user with name, role, stats,
+  animated avatar and quick links to projects and profiles.
+-->
+
+<section id="hero">
+  <div class="w">
+    <div class="hg">
+      <div class="htext">
+        <div class="pill r d1"><span class="pdot"></span>AVAILABLE FOR OPPORTUNITIES</div>
+        <h1 class="hn r d2">Nandun<br><span>De Silva</span></h1>
+        <p class="hrole r d3">Aspiring IT Business Analyst &amp; Software Engineering Graduate</p>
+        <p class="hdesc r d3">Focused on bridging business needs with structured technical solutions. Skilled in requirements analysis, systems modelling and data driven research, supported by a strong foundation in software engineering.</p>
+        <div class="hctas r d4">
+          <a href="#projects" class="bp">View Projects →</a>
+          <a href="https://linkedin.com/in/nandun-de-silva" target="_blank" class="bo">LinkedIn</a>
+          <a href="https://github.com/nandun-de-silva" target="_blank" class="bo">GitHub</a>
+        </div>
+        <div class="hstats r d4">
+          <div class="stat"><div class="sn">15<span class="sp">+</span></div><div class="sl">PROJECTS</div></div>
+          <div class="sep"></div>
+          <div class="stat"><div class="sn">80<span class="sp">+</span></div><div class="sl">RESEARCH PARTICIPANTS</div></div>
+          <div class="sep"></div>
+          <div class="stat"><div class="sn">6<span class="sp">+</span></div><div class="sl">CERTIFICATIONS</div></div>
+        </div>
+      </div>
+      <div class="pbox r d2">
+        <div class="pring">
+          <div class="pinner"><img src="/nandun-de-silva/avatar.JPG" alt="Nandun De Silva"/></div>
+        </div>
+        <div class="fb fb1 g">BSc Computer Science</div>
+        <div class="fb fb2 g">SPSS · Python</div>
+        <div class="fb fb3 g">Figma · UML · ERD</div>
+        <div class="fb fb4 g">Agile · Waterfall</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 0 80px;
+}
+
+.hg {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.htext {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 980px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  color: var(--t2);
+  margin-bottom: 28px;
+  width: fit-content;
+}
+
+.pdot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34c759;
+  box-shadow: 0 0 0 3px rgba(52,199,89,0.2);
+  flex-shrink: 0;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+h1.hn {
+  font-size: clamp(3.6rem,6.5vw,6.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--t1);
+  margin-bottom: 20px;
+}
+
+h1.hn span {
+  color: var(--accent);
+}
+
+.hrole {
+  font-size: clamp(1.05rem,1.5vw,1.2rem);
+  font-weight: 500;
+  color: var(--t2);
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+
+.hdesc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--t2);
+  max-width: 520px;
+  font-weight: 400;
+  margin-bottom: 36px;
+}
+
+.hctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.hstats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-right: 36px;
+}
+
+.sn {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--t1);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.sp {
+  color: var(--accent);
+  font-size: 1.8rem;
+}
+
+.sl {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--t3);
+}
+
+.sep {
+  width: 1px;
+  height: 48px;
+  background: var(--div);
+  margin-right: 36px;
+  flex-shrink: 0;
+}
+
+.pbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* rotating ring around avatar image */
+.pring {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(from 0deg,var(--accent),rgba(10,132,255,0.15) 50%,var(--accent));
+  animation: spin 12s linear infinite;
+  -webkit-animation: spin 12s linear infinite;
+  flex-shrink: 0;
+}
+
+.pinner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg);
+  animation: unspin 12s linear infinite;
+  -webkit-animation: unspin 12s linear infinite;
+}
+
+.pinner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.fb {
+  position: absolute;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 12px;
+  color: var(--t1);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.fb1 {
+  top: 12%;
+  left: -2%;
+  animation: bob 4s ease-in-out infinite;
+}
+
+.fb2 {
+  top: 8%;
+  right: -2%;
+  animation: bob 4s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+.fb3 {
+  bottom: 18%;
+  left: -4%;
+  animation: bob 4s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.fb4 {
+  bottom: 12%;
+  right: -2%;
+  animation: bob 4s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+@media (max-width: 1024px) {
+  .hg {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .pbox {
+    order: -1;
+  }
+  .pring {
+    width: 280px;
+    height: 280px;
+  }
+  .fb {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hg {
+    gap: 48px;
+  }
+  .pring {
+    width: 220px;
+    height: 220px;
+  }
+  h1.hn {
+    font-size: clamp(2.6rem, 9vw, 3.6rem);
+  }
+  .hctas {
+    gap: 10px;
+  }
+  .hstats {
+    gap: 0;
+  }
+  .stat {
+    padding-right: 20px;
+  }
+  .sep {
+    margin-right: 20px;
+    height: 36px;
+  }
+  .sn {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hstats {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .sep {
+    display: none;
+  }
+  .stat {
+    padding-right: 0;
+  }
+  .sn {
+    font-size: 1.8rem;
+  }
+}
+</style>
